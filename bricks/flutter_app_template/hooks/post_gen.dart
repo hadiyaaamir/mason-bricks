@@ -19,7 +19,7 @@ Future<void> run(HookContext context) async {
 
   // Flutter pub get
 
-  final bashCommand = 'cd ${appDirectory.path} && flutter pub get';
+  String bashCommand = 'cd ${appDirectory.path} && flutter pub get';
   final pubGetResult = await Process.run('bash', ['-c', bashCommand]);
 
   if (pubGetResult.exitCode != 0) {
@@ -27,6 +27,27 @@ Future<void> run(HookContext context) async {
       '\nError running flutter pub get: ${pubGetResult.stderr}',
     );
   }
+
+  // Packages flutter pub get
+  final cdCommand = 'cd ${appDirectory.path}/packages';
+  final pubGetCommand = 'flutter pub get';
+
+  final packages = [
+    'authentication_data_source',
+    'authentication_repository',
+    'cache_client',
+  ];
+
+  await Future.wait(
+    List.generate(
+      packages.length,
+      (index) {
+        final command = '$cdCommand/${packages[index]} && $pubGetCommand';
+        print('command $index: $command');
+        return Process.run('bash', ['-c', command]);
+      },
+    ),
+  );
 }
 
 // Create dependencies command

@@ -4,7 +4,7 @@ import 'package:mason/mason.dart';
 
 Future<void> main() async {
   final brick = Brick.path(
-    '/Users/hadiya/Documents/projects/mason-templates/mason-template/bricks/flutter_app_template',
+    '/Users/hadiya/Documents/projects/mason-templates/mason-bricks/bricks/flutter_app_template',
   );
 
   Map<String, dynamic> variables = <String, dynamic>{
