@@ -1,3 +1,6 @@
 bricks:
   flutter_app_template:
     path: bricks/flutter_app_template
+  feature_brick: ^0.6.2
+  feature_template:
+    path: bricks/feature_template
