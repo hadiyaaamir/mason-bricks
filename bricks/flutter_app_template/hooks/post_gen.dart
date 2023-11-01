@@ -6,61 +6,94 @@ Future<void> run(HookContext context) async {
   final appName = context.vars['appName'].toString().snakeCase;
   final appDirectory = Directory('${Directory.current.path}/$appName');
 
-  // Add dependencies
+  await Future.wait([
+    // main app pubspec
+    addAllDependencies(
+      path: appDirectory.path,
+      dependencies: [
+        'bloc',
+        'flutter_bloc',
+        'intl',
+        'equatable',
+        'formz',
+        'get_it',
+        'authentication_repository --path="packages/authentication_repository"',
+        'cache_client --path="packages/cache_client"'
+      ],
+      devDependencies: ['bloc_test', 'mocktail', 'very_good_analysis'],
+    ),
 
-  String dependencyCommand = 'cd ${appDirectory.path}${dependencies}';
-  final dependencyResult = await Process.run('bash', ['-c', dependencyCommand]);
+    // authentication_data_source package
+    addAllDependencies(
+      path: '${appDirectory.path}/packages/authentication_data_source',
+      dependencies: ['equatable', 'cache_client --path="../cache_client"'],
+      devDependencies: ['mocktail', 'test', 'very_good_analysis'],
+    ),
 
-  if (dependencyResult.exitCode != 0) {
-    context.logger.err(
-      '\nError running flutter pub get: ${dependencyResult.stderr}',
-    );
-  }
+    // authentication_repository package
+    addAllDependencies(
+      path: '${appDirectory.path}/packages/authentication_repository',
+      dependencies: [
+        'equatable',
+        'authentication_data_source --path="../authentication_data_source"',
+      ],
+      devDependencies: ['mocktail', 'test', 'very_good_analysis'],
+    ),
 
-  // Flutter pub get
+    // cache_client package
+    addAllDependencies(
+      path: '${appDirectory.path}/packages/cache_client',
+      dependencies: ['hive', 'path_provider'],
+      devDependencies: [
+        'mocktail',
+        'path_provider_platform_interface',
+        'plugin_platform_interface',
+        'test',
+        'very_good_analysis',
+      ],
+    ),
+  ]);
+}
 
-  String bashCommand = 'cd ${appDirectory.path} && flutter pub get';
-  final pubGetResult = await Process.run('bash', ['-c', bashCommand]);
+Future<void> addAllDependencies({
+  required String path,
+  required List<String> dependencies,
+  required List<String> devDependencies,
+}) async {
+  await Future.wait([
+    addDependencies(path: path, dependencies: dependencies),
+    addDevDependencies(path: path, devDependencies: devDependencies),
+  ]);
+}
 
-  if (pubGetResult.exitCode != 0) {
-    context.logger.err(
-      '\nError running flutter pub get: ${pubGetResult.stderr}',
-    );
-  }
-
-  // Packages flutter pub get
-  final cdCommand = 'cd ${appDirectory.path}/packages';
-  final pubGetCommand = 'flutter pub get';
-
-  final packages = [
-    'authentication_data_source',
-    'authentication_repository',
-    'cache_client',
-  ];
+Future<void> addDependencies({
+  required String path,
+  required List<String> dependencies,
+  bool devDependency = false,
+}) async {
+  final cdCommand = 'cd $path';
+  final pubAddCommand = 'flutter pub add${devDependency ? ' -d' : ''}';
 
   await Future.wait(
     List.generate(
-      packages.length,
+      dependencies.length,
       (index) {
-        final command = '$cdCommand/${packages[index]} && $pubGetCommand';
-        print('command $index: $command');
+        final command = '$cdCommand && $pubAddCommand ${dependencies[index]}';
         return Process.run('bash', ['-c', command]);
       },
     ),
   );
+
+  await Process.run('bash', ['-c', '$cdCommand && flutter pub get']);
 }
 
-// Create dependencies command
-String get dependencies {
-  final dependencies = ['bloc', 'flutter_bloc', 'intl', 'equatable', 'formz'];
-  final devDependencies = ['bloc_test', 'mocktail', 'very_good_analysis'];
-
-  String command = '';
-  for (final dependency in dependencies) {
-    command += ' && flutter pub add $dependency';
-  }
-  for (final devDependency in devDependencies) {
-    command += ' && flutter pub add -d $devDependency';
-  }
-  return command;
+Future<void> addDevDependencies({
+  required String path,
+  required List<String> devDependencies,
+}) async {
+  await addDependencies(
+    path: path,
+    dependencies: devDependencies,
+    devDependency: true,
+  );
 }

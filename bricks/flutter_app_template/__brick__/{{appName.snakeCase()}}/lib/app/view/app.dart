@@ -3,17 +3,15 @@ part of 'view.dart';
 class App extends StatelessWidget {
   const App({super.key});
 
+  static final _appCubit = AppCubit(
+    authenticationRepository: GetIt.I<AuthenticationRepository>(),
+  );
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '{{{appName.titleCase()}}}',
-      theme: {{#customTheme}}AppTheme().appTheme{{/customTheme}}{{^customTheme}}ThemeData(
-        colorSchemeSeed: Constants.colorSchemeSeed,
-        useMaterial3: true,
-      ){{/customTheme}},
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: const Text('Home Page'),
+    return BlocProvider(
+      create: (context) => _appCubit,
+      child: const AppView(),
     );
   }
 }

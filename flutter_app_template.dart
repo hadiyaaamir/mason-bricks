@@ -8,11 +8,18 @@ Future<void> main() async {
   );
 
   Map<String, dynamic> variables = <String, dynamic>{
-    'appName': 'My Flutter App',
+    'appName': 'My App',
     'companyName': 'com.vend',
     'appDescription': 'A New Flutter App',
-    'customTheme': false,
-    'validators': ['email', 'password', 'confirmed password', 'string input'],
+    'customTheme': true,
+    'validators': [
+      'email',
+      'password',
+      'confirmed password',
+      'string input',
+      'numeric input',
+      'username',
+    ],
   };
 
   final generator = await MasonGenerator.fromBrick(brick);

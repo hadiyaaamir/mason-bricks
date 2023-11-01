@@ -23,7 +23,7 @@ class NumericInput extends FormzInput<String, NumericInputValidationError> {
 
   @override
   NumericInputValidationError? validator(String value) {
-    RegExp numericRegExp = RegExp(r'^(?:\d+(\.\d+)?|\d*\.\d+|\d+/\d*)?$');
+    final numericRegExp = RegExp(r'^(?:\d+(\.\d+)?|\d*\.\d+|\d+/\d*)?$');
 
     return value.isEmpty && !allowEmpty
         ? NumericInputValidationError.empty
