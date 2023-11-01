@@ -1,4 +1,3 @@
-import 'package:{{appName.snakeCase()}}/utils/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class AppError extends StatelessWidget {
@@ -25,10 +24,14 @@ class AppError extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(24),
-            child: PrimaryButton(
-              text: 'Try again',
-              onPressed: retry,
-              isLoading: isLoading,
+            child: ElevatedButton(
+              child: isLoading
+                  ? const SizedBox.square(
+                      dimension: 24,
+                      child: CircularProgressIndicator.adaptive(),
+                    )
+                  : Text('Try again'),
+              onPressed: isLoading ? null : retry,
             ),
           ),
         ],

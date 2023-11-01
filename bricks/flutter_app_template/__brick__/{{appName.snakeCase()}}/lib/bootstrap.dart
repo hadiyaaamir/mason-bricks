@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
+import 'package:cache_client/cache_client.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_it/get_it.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -26,6 +29,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   };
 
   Bloc.observer = const AppBlocObserver();
+
+  await HiveCacheClient.initializeCache();
+
+  GetIt.instance.registerSingleton<AuthenticationRepository>(
+    AuthenticationRepositoryImpl(),
+  );
 
   // Add cross-flavor configuration here
 
