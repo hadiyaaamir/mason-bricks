@@ -11,7 +11,6 @@ Future<void> run(HookContext context) async {
   context.vars['isNone'] = stateManagement == 'none';
 
   final directory = Directory.current.path;
-  print('directory: $directory');
 
   final pubSpecFile = File('$directory/pubspec.yaml');
   final content = await pubSpecFile.readAsString();
@@ -21,5 +20,3 @@ Future<void> run(HookContext context) async {
   final featureName = (context.vars['featureName'] as String).snakeCase;
   context.vars['fullPath'] = '$packageName/$featureName';
 }
-
-class PubspecNameException implements Exception {}
