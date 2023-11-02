@@ -5,6 +5,6 @@ class {{featureName.pascalCase()}}View extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const {{featureName.pascalCase()}}Body();
   }
 }

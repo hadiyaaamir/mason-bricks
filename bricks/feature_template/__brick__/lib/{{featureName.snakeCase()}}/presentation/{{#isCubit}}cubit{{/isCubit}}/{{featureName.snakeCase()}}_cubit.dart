@@ -10,7 +10,7 @@ part '{{featureName.snakeCase()}}_state.dart';
 class {{featureName.pascalCase()}}Cubit extends Cubit<{{featureName.pascalCase()}}State> {
   {{featureName.pascalCase()}}Cubit() : super(const {{featureName.pascalCase()}}Initial());
 
-  FutureOr<void> CustomFunction() {
+  FutureOr<void> customFunction() {
     // TODO: Add Logic
   }
 }

@@ -20,14 +20,14 @@ Future<void> run(HookContext context) async {
         'authentication_repository --path="packages/authentication_repository"',
         'cache_client --path="packages/cache_client"'
       ],
-      devDependencies: ['bloc_test', 'mocktail', 'very_good_analysis'],
+      devDependencies: ['bloc_test', 'mocktail'],
     ),
 
     // authentication_data_source package
     addAllDependencies(
       path: '${appDirectory.path}/packages/authentication_data_source',
       dependencies: ['equatable', 'cache_client --path="../cache_client"'],
-      devDependencies: ['mocktail', 'test', 'very_good_analysis'],
+      devDependencies: ['mocktail', 'test'],
     ),
 
     // authentication_repository package
@@ -37,7 +37,7 @@ Future<void> run(HookContext context) async {
         'equatable',
         'authentication_data_source --path="../authentication_data_source"',
       ],
-      devDependencies: ['mocktail', 'test', 'very_good_analysis'],
+      devDependencies: ['mocktail', 'test'],
     ),
 
     // cache_client package
@@ -49,7 +49,6 @@ Future<void> run(HookContext context) async {
         'path_provider_platform_interface',
         'plugin_platform_interface',
         'test',
-        'very_good_analysis',
       ],
     ),
   ]);
