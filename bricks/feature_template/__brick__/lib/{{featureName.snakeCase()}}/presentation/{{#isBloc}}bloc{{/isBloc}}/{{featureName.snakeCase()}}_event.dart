@@ -8,7 +8,10 @@ abstract class {{featureName.pascalCase()}}Event extends Equatable {
 
 }
 
-
 class {{featureName.pascalCase()}}CustomEvent extends {{featureName.pascalCase()}}Event {
-  const {{featureName.pascalCase()}}CustomEvent();
+  const {{featureName.pascalCase()}}CustomEvent({required this.property});
+  final String property;
+
+  @override
+  List<Object> get props => [property];
 }

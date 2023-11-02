@@ -8,23 +8,22 @@ void main() {
   group('{{featureName.pascalCase()}}Bloc', () {
     group('constructor', () {
       test('can be instantiated', () {
-        expect(
-          {{featureName.pascalCase()}}Bloc(),
-          isNotNull,
-        );
+        expect({{featureName.pascalCase()}}Bloc(), isNotNull);
       });
     });
 
-    test('initial state has default value for customProperty', () {
+    test('initial state has default values', () {
       final {{featureName.camelCase()}}Bloc = {{featureName.pascalCase()}}Bloc();
       expect({{featureName.camelCase()}}Bloc.state.customProperty, equals('Default Value'));
     });
 
-    blocTest<{{featureName.pascalCase()}}Bloc, {{featureName.pascalCase()}}State>(
-      '{{featureName.pascalCase()}}CustomEvent emits nothing',
-      build: {{featureName.pascalCase()}}Bloc.new,
-      act: (bloc) => bloc.add(const {{featureName.pascalCase()}}CustomEvent()),
-      expect: () => <{{featureName.pascalCase()}}State>[],
-    );
+    group('{{featureName.pascalCase()}}CustomEvent', () {
+      blocTest<{{featureName.pascalCase()}}Bloc, {{featureName.pascalCase()}}State>(
+        'emits nothing',
+        build: {{featureName.pascalCase()}}Bloc.new,
+        act: (bloc) => bloc.add(const {{featureName.pascalCase()}}CustomEvent(property: '')),
+        expect: () => <{{featureName.pascalCase()}}State>[],
+      );
+    });
   });
 }

@@ -31,9 +31,9 @@ void main() {
 
     group('copyWith', () {
       test('copies correctly when no argument specified', () {
-        const oldState = {{featureName.pascalCase()}}State(customProperty: 'property');
+        final oldState = {{featureName.pascalCase()}}State(customProperty: 'property');
         final result = oldState.copyWith();
-        expect(oldState.customProperty, equals(result.customProperty));
+        expect(result.customProperty, equals(oldState.customProperty));
       });
 
       test('copies correctly when all arguments specified', () {

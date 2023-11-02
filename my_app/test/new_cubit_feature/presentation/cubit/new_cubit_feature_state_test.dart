@@ -1,44 +1,44 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:{{{fullPath}}}/{{featureName.snakeCase()}}.dart';
+import 'package:my_app/new_cubit_feature/new_cubit_feature.dart';
 
 void main() {
-  group('{{featureName.pascalCase()}}State', () {
+  group('NewCubitFeatureState', () {
     group('supports value equality', () {
       test('when comparing two default objects', () {
-        expect({{featureName.pascalCase()}}State(), equals({{featureName.pascalCase()}}State()));
+        expect(NewCubitFeatureState(), equals(NewCubitFeatureState()));
       });
       test('when comparing two objects with the same values', () {
         expect(
-          {{featureName.pascalCase()}}State(customProperty: 'property'),
-          equals({{featureName.pascalCase()}}State(customProperty: 'property')),
+          NewCubitFeatureState(customProperty: 'property'),
+          equals(NewCubitFeatureState(customProperty: 'property')),
         );
       });
       test('when comparing two objects with different values', () {
         expect(
-          {{featureName.pascalCase()}}State(customProperty: 'one'),
-          isNot(equals({{featureName.pascalCase()}}State(customProperty: 'two'))),
+          NewCubitFeatureState(customProperty: 'one'),
+          isNot(equals(NewCubitFeatureState(customProperty: 'two'))),
         );
       });
     });
 
     group('constructor', () {
       test('can be instantiated', () {
-        expect(const {{featureName.pascalCase()}}State(), isNotNull);
+        expect(const NewCubitFeatureState(), isNotNull);
       });
     });
 
     group('copyWith', () {
       test('copies correctly when no argument specified', () {
-        const oldState = {{featureName.pascalCase()}}State(customProperty: 'property');
+        final oldState = NewCubitFeatureState(customProperty: 'property');
         final result = oldState.copyWith();
-        expect(oldState.customProperty, equals(result.customProperty));
+        expect(result.customProperty, equals(oldState.customProperty));
       });
 
       test('copies correctly when all arguments specified', () {
-        final oldState = {{featureName.pascalCase()}}State(customProperty: 'one');
-        final newState = {{featureName.pascalCase()}}State(customProperty: 'two');
+        final oldState = NewCubitFeatureState(customProperty: 'one');
+        final newState = NewCubitFeatureState(customProperty: 'two');
 
         final result = oldState.copyWith(
           customProperty: newState.customProperty,
