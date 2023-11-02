@@ -6,8 +6,7 @@ publish_to: none
 environment:
   sdk: ">=3.0.0 <4.0.0"
 
-dependencies:
 
 
 dev_dependencies:
-
+  very_good_analysis: ^5.1.0

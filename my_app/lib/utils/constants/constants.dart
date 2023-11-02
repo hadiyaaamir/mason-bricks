@@ -1,7 +1,0 @@
-
-
-class Constants {
-  Constants._();
-
-  
-}
