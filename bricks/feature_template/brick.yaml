@@ -36,6 +36,7 @@ vars:
   stateManagement:
     type: enum
     description: Type of state management
+    prompt: What state management do you want to add?
     values:
       - bloc
       - cubit

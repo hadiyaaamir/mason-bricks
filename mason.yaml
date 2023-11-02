@@ -4,5 +4,3 @@ bricks:
   feature_brick: ^0.6.2
   feature_template:
     path: bricks/feature_template
-  testing:
-    path: bricks/testing
