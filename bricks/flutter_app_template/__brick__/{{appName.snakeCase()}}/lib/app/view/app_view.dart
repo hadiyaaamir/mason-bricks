@@ -8,7 +8,7 @@ class AppView extends StatelessWidget {
     return MaterialApp(
       title: '{{{appName.titleCase()}}}',
       theme: {{#customTheme}}AppTheme().appTheme{{/customTheme}}{{^customTheme}}ThemeData(
-        colorSchemeSeed: Constants.colorSchemeSeed,
+        colorSchemeSeed: kColorSchemeSeed,
         useMaterial3: true,
       ){{/customTheme}},
       localizationsDelegates: AppLocalizations.localizationsDelegates,

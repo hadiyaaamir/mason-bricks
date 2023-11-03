@@ -1,7 +1,5 @@
 {{^customTheme}}import 'package:flutter/material.dart';{{/customTheme}}
 
-class Constants {
-  Constants._();
+part 'localization_constants.dart';
 
-  {{^customTheme}}static const colorSchemeSeed = Colors.deepPurple;{{/customTheme}}
-}
+{{^customTheme}}const kColorSchemeSeed = Colors.deepPurple;{{/customTheme}}

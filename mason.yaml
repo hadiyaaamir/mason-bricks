@@ -1,10 +1,10 @@
 bricks:
   feature_brick: ^0.6.2
-  flutter_app_template:
-    git:
-      url: "https://github.com/hadiyaaamir/mason-bricks.git"
-      path: bricks/flutter_app_template
   feature_template:
     git:
       url: "https://github.com/hadiyaaamir/mason-bricks.git"
       path: bricks/feature_template
+  flutter_app_template:
+    git:
+      url: "https://github.com/hadiyaaamir/mason-bricks.git"
+      path: bricks/flutter_app_template
