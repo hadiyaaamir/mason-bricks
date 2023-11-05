@@ -3,18 +3,22 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 
 Future<void> main() async {
-  final brick = Brick.git(
-    GitPath(
-      "https://github.com/hadiyaaamir/mason-bricks.git",
-      path: 'bricks/flutter_app_template',
-    ),
+  // final brick = Brick.git(
+  //   GitPath(
+  //     "https://github.com/hadiyaaamir/mason-bricks.git",
+  //     path: 'bricks/flutter_app_template',
+  //   ),
+  // );
+
+  final brick = Brick.path(
+    '/Users/hadiya/Documents/projects/mason-templates/mason-bricks/bricks/flutter_app_template',
   );
 
   Map<String, dynamic> variables = <String, dynamic>{
-    'appName': 'My App',
+    'appName': 'Flutter App',
     'companyName': 'com.vend',
     'appDescription': 'A New Flutter App',
-    'customTheme': true,
+    'customTheme': false,
     'validators': [
       'email',
       'password',
