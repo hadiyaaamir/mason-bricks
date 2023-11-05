@@ -15,7 +15,7 @@ Future<void> main() async {
   );
 
   Map<String, dynamic> variables = <String, dynamic>{
-    'appName': 'My App',
+    'appName': 'Flutter App',
     'companyName': 'com.vend',
     'appDescription': 'A New Flutter App',
     'customTheme': false,
