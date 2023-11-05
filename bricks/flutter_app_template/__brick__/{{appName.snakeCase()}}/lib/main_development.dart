@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:{{appName.snakeCase()}}/app/app.dart';
 import 'package:{{appName.snakeCase()}}/bootstrap.dart';
+import 'package:localization/localization.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  bootstrap(() => const App());
+  await EasyLocalization.ensureInitialized();
+  await bootstrap(() => const App());
 }
