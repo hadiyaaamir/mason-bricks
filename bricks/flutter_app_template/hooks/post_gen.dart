@@ -18,7 +18,8 @@ Future<void> run(HookContext context) async {
         'formz',
         'get_it',
         'authentication_repository --path="packages/authentication_repository"',
-        'cache_client --path="packages/cache_client"'
+        'cache_client --path="packages/cache_client"',
+        'localization --path="packages/localization"',
       ],
       devDependencies: ['bloc_test', 'mocktail'],
     ),
@@ -50,6 +51,13 @@ Future<void> run(HookContext context) async {
         'plugin_platform_interface',
         'test',
       ],
+    ),
+
+    // localization package
+    addAllDependencies(
+      path: '${appDirectory.path}/packages/localization',
+      dependencies: ['easy_localization'],
+      devDependencies: ['mocktail', 'test'],
     ),
   ]);
 
