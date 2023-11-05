@@ -52,6 +52,12 @@ Future<void> run(HookContext context) async {
       ],
     ),
   ]);
+
+  String cdCommand = 'cd ${appDirectory.path}';
+  String cleanAndGetCommand = 'flutter clean && flutter pub get';
+
+  await Process.run('bash', ['-c', '$cdCommand && $cleanAndGetCommand']);
+  await Process.run('bash', ['-c', '$cdCommand/ios && pod install']);
 }
 
 Future<void> addAllDependencies({
