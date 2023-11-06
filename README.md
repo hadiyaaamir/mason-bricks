@@ -13,14 +13,11 @@ Mason Bricks is powered by [Felix Angelov's Mason](https://github.com/felangel/m
 
 This project offers two brick templates:
 
-### 1. [Flutter App Template](bricks/flutter_app_template/) 
+1. **[Flutter App Template](bricks/flutter_app_template/):** <br>
+Kickstart your Dart or Flutter project with a basic app structure, essential packages, and boilerplate code.
 
- Kickstart your Dart or Flutter project with a basic app structure, essential packages, and boilerplate code.
-
-
-### 2. [Feature Template](bricks/feature_template/)   
-
-Easily create feature folders in your app with options for state management (BLoC, Cubit, or none). Simplify feature organization.
+2. **[Feature Template](bricks/flutter_app_template/):** <br>
+Easily create feature folders in your app with options for state management (BLoC, Cubit, or none).
 
 
 <br>
@@ -34,7 +31,7 @@ The given code generates the flutter_app_template brick with the given variables
 
 <br>
 
-Here's how to modify the provided code to generate your own bricks, and pass your own variable values.
+Here's how to modify the provided code to generate your own bricks, and pass your own variable values:
 
 
 
