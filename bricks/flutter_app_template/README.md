@@ -178,7 +178,7 @@ appName
 
 ## Hooks 🪝
 ✅ Pre-Gen <br> 
-❌ Post-Gen
+✅ Post-Gen
 
 <br>
 
