@@ -1,9 +1,5 @@
 # {{appName.titleCase()}}
 
-![coverage][coverage_badge]
-[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
-[![License: MIT][license_badge]][license_link]
-
 
 {{appDescription}}
 
@@ -30,7 +26,7 @@ $ flutter run --flavor staging --target lib/main_staging.dart
 $ flutter run --flavor production --target lib/main_production.dart
 ```
 
-_\*My App works on iOS, Android, Web, and Windows._
+_\*This App works on iOS, Android, Web, and Windows._
 
 ---
 
@@ -56,118 +52,115 @@ $ open coverage/index.html
 
 ## Working with Translations 🌐
 
-This project relies on [flutter_localizations][flutter_localizations_link] and follows the [official internationalization guide for Flutter][internationalization_link].
+This project relies on the [easy_localisation][easy_localizations_link] package. The logic is encapsulated within a separate [Localization](packages/localization) package in the app.
 
 ### Adding Strings
 
-1. To add a new localizable string, open the `app_en.arb` file at `lib/l10n/arb/app_en.arb`.
+1. To add a new localizable string, open the `locale.json` files in the Localization package at `packages/localization/assets/translations`.
 
-```arb
+```json
 {
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+  "home": {
+    "title": "Home Page"
+  }
 }
 ```
 
-2. Then add a new key/value and description
+2. Then, for each locale, add a new key/value pair
 
-```arb
+`en.json`
+
+```json
 {
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    },
-    "helloWorld": "Hello World",
-    "@helloWorld": {
-        "description": "Hello World Text"
-    }
+  "home": {
+    "title": "Home Page"
+  },
+  "new_string": "New string"
 }
 ```
 
-3. Use the new string
+`es.json`
+
+```json
+{
+  "home": {
+    "title": "Pagina de Inicio"
+  },
+  "new_string": "nueva cadena"
+}
+```
+
+3. Creating a static Getter for the String <br>
+In the `locale_strings.dart` file in the Localization package at `packages/localization/lib/src`, create a getter for your new string.
 
 ```dart
-import 'package:{{appName.snakeCase()}}/l10n/l10n.dart';
+part of 'localization.dart';
+
+/// A class to translate and get Strings depending on the locale
+
+class LocaleStrings {
+  LocaleStrings._();
+
+  /// Title of the application
+  static const String appTitle = '{{{appName.titleCase()}}}';
+
+  /// Home Page title
+  static String get homePageTitle => 'home.title'.tr();
+
+  /// New String
+  static String get newString => 'new_string'.tr();
+}
+```
+
+4. Use the new string <br>
+
+```dart
+import 'package:localization/localization.dart';
 
 @override
 Widget build(BuildContext context) {
-  final l10n = context.l10n;
-  return Text(l10n.helloWorld);
+  return Text(LocaleStrings.newString);
 }
-```
-
-### Adding Supported Locales
-
-Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info.plist` to include the new locale.
-
-```xml
-    ...
-
-    <key>CFBundleLocalizations</key>
-	<array>
-		<string>en</string>
-		<string>es</string>
-	</array>
-
-    ...
 ```
 
 ### Adding Translations
 
-1. For each supported locale, add a new ARB file in `lib/l10n/arb`.
+1. For each supported locale, add a new JSON file in `assets/translations` inside the Localization package.
 
 ```
-├── l10n
-│   ├── arb
-│   │   ├── app_en.arb
-│   │   └── app_es.arb
+├── packages
+│   ├── localization
+│   │   ├── assets
+│   │   │   └── translations
+│   │   │   │   ├── en.json
+│   │   │   │   └── es.json
 ```
 
-2. Add the translated strings to each `.arb` file:
+2. The files may follow either format
 
-`app_en.arb`
-
-```arb
-{
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
-}
+```
+assets
+└── translations
+    ├── {languageCode}.{ext}                  //only language code
+    └── {languageCode}-{countryCode}.{ext}    //or full locale code
+```
+`Example:`
+```
+assets
+└── translations
+    ├── en.json
+    └── en-US.json 
 ```
 
-`app_es.arb`
+3. Add the translated strings to each new `.json` file that you create.
 
-```arb
-{
-    "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
-    }
-}
-```
 
-### Generating Translations
 
-To use the latest translations changes, you will need to generate them:
 
-1. Generate localizations for the current project:
 
-```sh
-flutter gen-l10n --arb-dir="lib/l10n/arb"
-```
 
-Alternatively, run `flutter run` and code generation will take place automatically.
+[easy_localizations_link]: https://pub.dev/packages/easy_localization
 
-[coverage_badge]: coverage_badge.svg
-[flutter_localizations_link]: https://api.flutter.dev/flutter/flutter_localizations/flutter_localizations-library.html
-[internationalization_link]: https://flutter.dev/docs/development/accessibility-and-localization/internationalization
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
 [very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
