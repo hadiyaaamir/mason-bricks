@@ -30,10 +30,13 @@ Easily create feature folders in your app with options for state management (BLo
 
 To demonstrate how you can create bricks programmatically, you can refer to the example code in the [`flutter_app_template.dart`](flutter_app_template.dart) file in this repository. 
 
+The given code generates the flutter_app_template brick with the given variables.
+
+<br>
 
 Here's how to modify the provided code to generate your own bricks, and pass your own variable values.
 
-<br>
+
 
 ### 1. Obtain the Brick
 
