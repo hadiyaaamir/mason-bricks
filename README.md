@@ -16,7 +16,7 @@ This project offers two brick templates:
 1. **[Flutter App Template](bricks/flutter_app_template/):** <br>
 Kickstart your Dart or Flutter project with a basic app structure, essential packages, and boilerplate code.
 
-2. **[Feature Template](bricks/flutter_app_template/):** <br>
+2. **[Feature Template](bricks/feature_template/):** <br>
 Easily create feature folders in your app with options for state management (BLoC, Cubit, or none).
 
 
