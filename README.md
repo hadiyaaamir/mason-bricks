@@ -1,5 +1,7 @@
 # Mason Bricks 🧱✨
 
+<br>
+
 A collection of reusable components, or "bricks," for building Flutter applications. These bricks are designed to streamline the development process and enhance code reusability, making it easier to create robust Dart applications.
 
 Mason Bricks is powered by [Felix Angelov's Mason](https://github.com/felangel/mason), a code generation tool for Dart and Flutter. 
@@ -31,7 +33,7 @@ To demonstrate how you can create bricks programmatically, you can refer to the 
 
 Here's how to modify the provided code to generate your own bricks, and pass your own variable values.
 
-
+<br>
 
 ### 1. Obtain the Brick
 
@@ -60,9 +62,12 @@ final brick = final brick = Brick.git(
 final brick = Brick.version(name: 'name', version: 'version');
 ```
     
+<br>
 
 ### 2. Customise Variables
 Next, you can tailor your brick generation by customizing the variables. Modify the variables in the `Map<String, dynamic>` to align the brick with your project's specific requirements. 
+
+<br>
 
 ### 3. Generate the Brick
 
