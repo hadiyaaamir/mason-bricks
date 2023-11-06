@@ -37,6 +37,7 @@ mason add -g feature_template --git-url='https://github.com/hadiyaaamir/mason-br
 <br>
 
 ## Usage 🚀
+Navigate to your application folder, then run the following command
 ```sh
 mason make feature_template
 ```
@@ -46,7 +47,7 @@ mason make feature_template
 | Name           | Description             | Default(s) | Type   |
 |----------------|-------------------------|------------|--------|
 | `featureName`    | Feature name            | login      | `string` |
-| `stateManagement`| Type of state management<br>(Options: bloc, cubit, none)| bloc       | `enum`   |
+| `stateManagement`| Type of state management<br><sub>(Options: bloc, cubit, none)</sub>| bloc       | `enum`   |
 
 <br>
 
