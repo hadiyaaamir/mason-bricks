@@ -1,0 +1,57 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "mason-bricks",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "mason-bricks (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "mason-bricks (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "hooks",
+            "cwd": "bricks/feature_template/hooks",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "hooks",
+            "cwd": "bricks/flutter_app_template/hooks",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "{{appName.snakeCase()}}",
+            "cwd": "bricks/flutter_app_template/__brick__/{{appName.snakeCase()}}",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "{{appName.snakeCase()}} (profile mode)",
+            "cwd": "bricks/flutter_app_template/__brick__/{{appName.snakeCase()}}",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "{{appName.snakeCase()}} (release mode)",
+            "cwd": "bricks/flutter_app_template/__brick__/{{appName.snakeCase()}}",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
