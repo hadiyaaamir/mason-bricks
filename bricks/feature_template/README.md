@@ -168,7 +168,7 @@ mason make feature_template
 
 ## Hooks 🪝
 ✅ Pre-Gen <br> 
-✅ Post-Gen
+❌ Post-Gen
 
 
 

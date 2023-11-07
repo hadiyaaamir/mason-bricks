@@ -66,6 +66,17 @@ Future<void> run(HookContext context) async {
 
   await Process.run('bash', ['-c', '$cdCommand && $cleanAndGetCommand']);
   await Process.run('bash', ['-c', '$cdCommand/ios && pod install']);
+
+  // Delete gitkeep files
+  if (!appDirectory.existsSync()) return;
+
+  final gitKeepFiles = appDirectory
+      .listSync(recursive: true, followLinks: false)
+      .where((entity) => entity is File && entity.path.endsWith('.gitkeep'));
+
+  for (final file in gitKeepFiles) {
+    file.deleteSync();
+  }
 }
 
 Future<void> addAllDependencies({
