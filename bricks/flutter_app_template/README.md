@@ -66,7 +66,7 @@ mason make flutter_app_template
 
 ## Variables ✨
 
-| Name            | Description                  | Default       | Type     |
+| Name            | Description                  | Default(s)    | Type     |
 |-----------------|------------------------------|---------------|----------|
 | `appName`       | Application name             | My App        | `string` |
 | `companyName`   | Company name                 | com.vend       | `string` |
