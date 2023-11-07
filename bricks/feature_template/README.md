@@ -62,7 +62,7 @@ mason make feature_template
 │   │   ├── domain
 │   │   │   └── domain.dart
 │   │   ├── presentation
-│   │   │   ├── cubit
+│   │   │   ├── bloc
 │   │   │   │   ├── feature_bloc.dart
 │   │   │   │   ├── feature_event.dart
 │   │   │   │   └── feature_state.dart
