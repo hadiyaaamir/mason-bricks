@@ -8,3 +8,5 @@ bricks:
     git:
       url: "https://github.com/hadiyaaamir/mason-bricks.git"
       path: bricks/flutter_app_template
+  sample_brick:
+    path: bricks/sample_brick

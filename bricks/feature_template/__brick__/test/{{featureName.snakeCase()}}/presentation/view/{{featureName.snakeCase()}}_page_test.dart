@@ -6,7 +6,7 @@ import 'package:{{{fullPath}}}/{{featureName.snakeCase()}}.dart';
 
 
 void main() {
-  group('LoginPage', () {
+  group('{{featureName.pascalCase()}}Page', () {
     group('route', () {
       test('is routable', () {
         expect({{featureName.pascalCase()}}Page.route(), isA<MaterialPageRoute<dynamic>>());

@@ -6,7 +6,7 @@ class LocaleStrings {
   LocaleStrings._();
 
   /// Title of the application
-  static const String appTitle = '{{{appName.titleCase()}}}';
+  static const String appTitle = '{{appName.titleCase()}}';
 
   /// Home Page title
   static String get homePageTitle => 'home.title'.tr();
